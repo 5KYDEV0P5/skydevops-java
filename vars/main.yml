@@ -1,7 +1,7 @@
 ---
-# vars file for sdjava
-java_version: 1.8.0_112
+# vars file for sdjava jdk1.8.0_171
+java_version: 1.8.0_171
 java_install_dir: /apps
 java_src_tar: jdk-8u112-linux-x64.tar.gz
-java_home: /apps/jdk1.8.0_112
+java_home: /apps/jdk1.8.0_171
 java_shared_home: /usr/shared/java
