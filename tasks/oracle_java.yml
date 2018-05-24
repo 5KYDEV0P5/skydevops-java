@@ -3,8 +3,8 @@
   unarchive: 
     src={{ java_src_tar }} 
     dest={{ java_install_dir }}
-    # extra_opts="[--strip-components=1]"
-    copy=false
+    copy: false
+    remote_src: false
   # command: tar xzf {{ java_src_tar }} -C {{ java_install_dir }}
 
 # global shared directory
