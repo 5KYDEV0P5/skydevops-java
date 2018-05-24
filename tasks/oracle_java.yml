@@ -1,0 +1,19 @@
+# extract the java archive
+- name: Extract JDK to Install directory
+  unarchive: src={{ java_src_tar }} dest={{ java_install_dir }}
+
+# global shared directory
+- name: java shared directory
+  file: path={{ java_shared_home }} state=directory
+
+# symlink the shared directory
+- name: symlink JDK Install directory
+  file: src={{ java_home }} path={{ java_shared_home }} state=link force=yes
+
+# install thriugh alternatives
+- name: setup alternatives
+  template: src=alternatives.j2 dest=~/alternatives.sh mode="u=rwx,g=r,o=r"
+- name: Apply java alternatives
+  shell: ~/alternatives.sh
+- name: delete alternatives script
+  file: path=~/alternatives.sh state=absent  

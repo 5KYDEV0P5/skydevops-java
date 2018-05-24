@@ -1,0 +1,9 @@
+---
+# tasks file for sdjava
+# Gather facts
+- include: facts.yml
+
+# Java 8
+-name: Install Java
+  include: oracle_java.yml
+  when: JDK_NOT_INSTALLED
