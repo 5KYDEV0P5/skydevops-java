@@ -13,6 +13,14 @@
 - name: symlink JDK Install directory
   file: src={{ java_home }} path={{ java_shared_home }} state=link force=yes
 
+# Global variables
+- name: JAVA global environment variables
+  template: src=profile.sh.j2 dest={{ java_profile_sh }} mode="u=rwx,g=r,o=r" owner=root
+
+# Source the profile
+- name: Source JAVA profile
+  shell: source {{ java_profile_sh }}
+
 # install thriugh alternatives
 - name: setup alternatives
   template: src=alternatives.j2 dest=~/alternatives.sh mode="u=rwx,g=r,o=r"

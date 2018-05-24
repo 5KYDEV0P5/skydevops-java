@@ -1,7 +1,9 @@
 ---
 # vars file for sdjava jdk1.8.0_171
+# zip -r archive_name.zip directory_to_compress
 java_version: 1.8.0_171
 java_install_dir: /apps
 java_src_tar: jdk-8u171-linux-x64.zip
 java_home: /apps/jdk1.8.0_171
 java_shared_home: /usr/shared/java
+java_profile_sh: /etc/profile.d/jdk.sh
