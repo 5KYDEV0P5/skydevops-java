@@ -3,7 +3,11 @@
 # Gather facts
 - include: facts.yml
 
-# Java 8
-- name: Install Java
-  include: oracle_java.yml
-  when: JDK_NOT_INSTALLED
+
+
+# Setup/install tasks.
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
