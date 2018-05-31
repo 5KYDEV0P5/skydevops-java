@@ -1,8 +1,6 @@
 # extract the java archive
 - name: Extract JDK to Install directory
-  unarchive: 
-    src={{ java_src_tar }} 
-    dest={{ java_install_dir }}
+  unarchive: src={{ java_src_tar }} dest={{ java_install_dir }}
 
 # global shared directory
 - name: java shared directory
@@ -18,7 +16,8 @@
 
 # Source the profile
 - name: Source JAVA profile
-  shell: source {{ java_profile_sh }}
+  sudo: no
+  shell: . {{ java_profile_sh }}
 
 # install thriugh alternatives
 - name: setup alternatives
