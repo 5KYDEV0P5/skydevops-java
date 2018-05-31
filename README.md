@@ -1,4 +1,4 @@
-SDMAVEN
+SDJAVA
 =========
 
 This role will install and configure Oracle Java 1.8.0_171/172. Need to manually switch the version. [In future release thsi will be just a change of variable]
