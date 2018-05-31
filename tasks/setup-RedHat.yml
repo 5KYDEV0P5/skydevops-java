@@ -20,7 +20,7 @@
 
 # install thriugh alternatives
 - name: setup alternatives
-  template: src=alternatives.j2 dest=~/alternatives.sh mode="u=rwx,g=r,o=r"
+  template: src=alternatives-RedHat.j2 dest=~/alternatives.sh mode="u=rwx,g=r,o=r"
 - name: Apply java alternatives
   shell: ~/alternatives.sh
 - name: delete alternatives script
