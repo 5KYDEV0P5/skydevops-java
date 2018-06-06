@@ -50,9 +50,6 @@
     path: "{{java_data_dir}}/{{java_src_tar}}"
   register: jdk_already_present
 
-- name: Checking the Stats
-  debug:
-    msg: "{{jdk_already_present.stat}}"
 
 - name: download Java RPM
   get_url:
@@ -64,5 +61,4 @@
   until: oracle_java_task_tar_download is succeeded
   retries: 10
   delay: 5
-  become: yes
   when: jdk_already_present.stat.exists == False 

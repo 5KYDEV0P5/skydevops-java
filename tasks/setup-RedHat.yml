@@ -3,8 +3,6 @@
   unarchive: 
     src: "{{java_data_dir}}/{{java_src_tar}}"
     dest: "{{java_install_dir}}"
-    owner: root
-    group: root
 
 
 # global shared directory
