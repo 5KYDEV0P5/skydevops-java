@@ -3,7 +3,7 @@ data_dir: /data
 apps_dir: /apps
 # Libraries and utilities
 apt_libraries_utilities:
-  - ntpd
+  - ntp
   - lsof
   - wget
   - python-software-properties
