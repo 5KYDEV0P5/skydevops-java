@@ -47,7 +47,7 @@
   set_fact:
     jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b12"
     java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk161_b12}}/jdk-{{java_src_tar}}"
-  when: java_main_rel == 8 and java_min_rel == 171
+  when: java_main_rel == 8 and java_min_rel == 161
 
 
 - name: set internal vars for 1.8.0_141
