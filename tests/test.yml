@@ -2,5 +2,5 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - common
+    - 5KYDEV0P5.common
     - skydevops-java
