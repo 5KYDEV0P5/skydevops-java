@@ -62,7 +62,7 @@
 
 - name: download Java RPM
   get_url:
-    headers: "gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie "
+    headers: "gpw_e24: http%3A%2F%2Fwww.oracle.com%2F, oraclelicense:accept-securebackup-cookie "
     dest: "{{ java_install_dir }}/{{ java_src_tar }}"
     url: "{{ java_download_url }}"
     validate_certs: yes
