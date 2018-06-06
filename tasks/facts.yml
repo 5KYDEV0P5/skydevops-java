@@ -59,4 +59,4 @@
 
 - name: Download Location
   debug:
-    msg: "{{ java_install_dir }}/{{ java_src_tar }}"
+    msg: {{ java_install_dir }}/{{ java_src_tar }}

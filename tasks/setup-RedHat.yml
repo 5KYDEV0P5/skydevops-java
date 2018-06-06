@@ -2,7 +2,8 @@
 - name: Extract JDK to Install directory
   unarchive: 
     src: "{{java_data_dir}}/{{java_src_tar}}" 
-    dest: {{java_install_dir}}
+    dest: "{{java_install_dir}}"
+
 
 # global shared directory
 - name: java shared directory
