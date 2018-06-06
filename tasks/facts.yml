@@ -3,19 +3,12 @@
 - name: Check Java Version
   shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g' |  awk '{split($0,a,"."); print a[2]}'
   register: jmaxver
+  changed_when: false
 - name: Check Java Version
   shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g' |  awk '{split($0,a,"."); print a[3]}' | awk '{split($0,b,"_"); print b[2]}'
   register: jminver
+  changed_when: false
 
-- debug:
-    var="{{ item }}"
-  when: item is defined and debug | default(false)
-  with_items:
-    - installed_java
-    - task_installed_java
-    - task_installed_java_version
-    - java_version_installed
-    - java_version_string
 
 - name: set internal vars for 1.8.0_172
   set_fact:
