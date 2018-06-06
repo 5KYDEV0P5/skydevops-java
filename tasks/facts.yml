@@ -1,10 +1,56 @@
-# gathering Java facts
-- name: Check Java Version
-  shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
-  register: install_java_version
-- set_fact:
-    JDK_VERSION: "{{ install_java_version.stdout }}"
-    JDK_NOT_INSTALLED: "{{ java_version not in install_java_version.stdout }}"
-- name: installed Java Version
-  debug: 
-    msg: "Installed java version = {{ JDK_VERSION }} "
+---
+- name: determine if Java is already installed
+  shell: which java
+  register: task_installed_java
+  changed_when: task_installed_java.rc != 0
+  failed_when: no
+
+- name: set fact installed_java
+  set_fact:
+    installed_java={{ not task_installed_java.changed }}
+
+- name: determine which Java version is installed
+  shell: java -version
+  when: installed_java
+  register: task_installed_java_version
+  changed_when: False
+
+- name: set fact installed_java_version
+  set_fact:
+    java_version_installed="{{ task_installed_java_version.stderr.split('\n')[0]|regex_replace('.*\"(.*)\"','\\1') }}"
+  when: task_installed_java_version is defined and task_installed_java_version.stdout is defined
+  changed_when: False
+
+- debug:
+    var="{{ item }}"
+  when: item is defined and debug | default(false)
+  with_items:
+    - installed_java
+    - task_installed_java
+    - task_installed_java_version
+    - java_version_installed
+    - java_version_string
+
+- name: set internal vars for 1.8.0_172
+  set_fact:
+    jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b11"
+    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk172_b11}}/jdk-{{java_src_tar}}"
+  when: java_main_rel == 8 and java_min_rel == 172
+
+- name: set internal vars for 1.8.0_171
+  set_fact:
+    jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b11"
+    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk171_b11}}/jdk-{{java_src_tar}}"
+  when: java_main_rel == 8 and java_min_rel == 171
+
+- name: set internal vars for 1.8.0_161
+  set_fact:
+    jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b12"
+    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk161_b12}}/jdk-{{java_src_tar}}"
+  when: java_main_rel == 8 and java_min_rel == 161
+
+- name: set internal vars for 1.8.0_141
+  set_fact:
+    jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b15"
+    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk141_b15}}/jdk-{{java_src_tar}}"
+  when: java_main_rel == 8 and java_min_rel == 141
