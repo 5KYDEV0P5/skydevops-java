@@ -56,13 +56,17 @@
     java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk141_b15}}/jdk-{{java_src_tar}}"
   when: java_main_rel == 8 and java_min_rel == 141
 
-- name: download Java RPM
-  get_url:
-    headers: 'Cookie:gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie' 
-    dest: "{{ java_install_dir }}/{{ java_src_tar }}"
-    url: "{{ java_download_url }}"
-    validate_certs: yes
-    timeout: 10
-  register: oracle_java_task_tar_download
-  until: oracle_java_task_tar_download|succeeded 
-  become: yes
+- name: Show Download url
+  debug:
+    msg: "{{java_download_url}}"
+
+# - name: download Java RPM
+#   get_url:
+#     headers: 'Cookie:gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie' 
+#     dest: "{{ java_install_dir }}/{{ java_src_tar }}"
+#     url: "{{ java_download_url }}"
+#     validate_certs: yes
+#     timeout: 10
+#   register: oracle_java_task_tar_download
+#   until: oracle_java_task_tar_download|succeeded 
+#   become: yes
