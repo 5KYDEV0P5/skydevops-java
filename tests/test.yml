@@ -3,7 +3,7 @@
   vars_files:
     - common_vars.yml
 
-  tasks:
+  pre_tasks:
     - name: Check DATA directory
       file: path={{ data_dir }} state=directory mode=0775 setype=usr_t
     - name: Check APPS directory
