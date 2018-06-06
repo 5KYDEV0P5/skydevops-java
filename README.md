@@ -6,8 +6,6 @@
 
 This role will install and configure Oracle Java 1.8.0_171/172 on RedHat/CentOS and Debian/Ubuntu systems. 
 
-```Note: Need to manually switch the version. [In future release thsi will be just a change of variable]
-```
 
 ## Requirements
 - Ansible >=2.3
@@ -18,11 +16,14 @@ This role will install and configure Oracle Java 1.8.0_171/172 on RedHat/CentOS 
 All the variable that can be overridden are stored in [vars/main.yml](vars/main.yml) or [defaults/main.yml](defaults/main.yml) file as shown in the table below:
 
 | Name           | Default Value | Description                        |
-| -------------- | ------------- | -----------------------------------|
-| `java_version` | : 1.8.0_171 | Describes the version of Java that will be installed |
+| -------------- | ----------------------- | -----------------------------------|
+| `java_main_rel` | : 8 | Major Release of Java |
+| `java_min_rel` | : 171 | Minor Release of Java, select 172 or 171 |
+| `java_data_dir` | : /data | The directory where the application data is stored<br> Automatically created by [common](https://github.com/5KYDEV0P5/common) Role |
 | `java_install_dir` | : /apps | The directory where the application is installed<br> Automatically created by [common](https://github.com/5KYDEV0P5/common) Role |
-| `java_src_tar` | : jdk-8u171-linux-x64.zip | The name of the Oracle Java Archive |
-| `java_home` | : /apps/jdk1.8.0_171 | JAVA_HOME ENV variable |
+| `java_version` | : "1.{{java_main_rel}}.0_{{java_min_rel}}" | Describes the version of Java that will be installed |
+| `java_src_tar` | : "jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz" | The Oracle Java Archive |
+| `java_home` | : "{{java_install_dir}}/jdk{{java_version}}" | JAVA_HOME ENV variable |
 | `java_shared_home` | : /usr/shared/java | Symlink to the installed JAVA |
 | `java_profile_sh` | : /etc/profile.d/jdk.sh | Jinja2 Template, which contains the info to source the ENV variables |
 
