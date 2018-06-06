@@ -1,7 +1,6 @@
 ---
 - hosts: localhost
-  remote_user: root
+  pre_tasks:
+    - include_tasks: common/tasks/main.yml
   roles:
-    - 5KYDEV0P5.common
-    - 5KYDEV0P5.skydevops-java
     - role_under_test
