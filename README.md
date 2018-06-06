@@ -48,7 +48,7 @@ All the variable that can be overridden are stored in [vars/main.yml](vars/main.
   become: yes
   gather_facts: yes
   roles:
-    - role: sdjava
+    - role: skydevops-java
 ```
 
 License
