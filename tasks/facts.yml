@@ -34,26 +34,26 @@
 - name: set internal vars for 1.8.0_172
   set_fact:
     jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b11"
-    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk172_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
+    java_download_url: "http://download.oracle.com/otn/java/jdk/{{jdk_version_detail}}/{{jdk172_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 172
 
 - name: set internal vars for 1.8.0_171
   set_fact:
     jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b11"
-    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk171_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
+    java_download_url: "http://download.oracle.com/otn/java/jdk/{{jdk_version_detail}}/{{jdk171_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 171
 
 - name: set internal vars for 1.8.0_161
   set_fact:
     jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b12"
-    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_main_rel }}u{{ java_min_rel }}-b12/{{jdk161_b12}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
+    java_download_url: "http://download.oracle.com/otn/java/jdk/{{ java_main_rel }}u{{ java_min_rel }}-b12/{{jdk161_b12}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 161
 
 
 - name: set internal vars for 1.8.0_141
   set_fact:
     jdk_version_detail: "{{ java_main_rel }}u{{ java_min_rel }}-b15"
-    java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{jdk_version_detail}}/{{jdk141_b15}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
+    java_download_url: "http://download.oracle.com/otn/java/jdk/{{jdk_version_detail}}/{{jdk141_b15}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 141
 
 - name: Show Download url
