@@ -56,3 +56,7 @@
   retries: 10
   delay: 5
   become: yes
+
+- name: Download Location
+  debug:
+    msg: "{{ java_install_dir }}/{{ java_src_tar }}"
