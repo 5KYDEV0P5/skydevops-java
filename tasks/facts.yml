@@ -6,4 +6,5 @@
     JDK_VERSION: "{{ install_java_version.stdout }}"
     JDK_NOT_INSTALLED: "{{ java_version not in install_java_version.stdout }}"
 - name: installed Java Version
-  debug: msg="Installed java version = {{ JDK_VERSION }} "
+  debug: 
+    msg: "Installed java version = {{ JDK_VERSION }} "

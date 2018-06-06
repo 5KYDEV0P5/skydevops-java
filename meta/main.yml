@@ -1,6 +1,6 @@
 galaxy_info:
   author: Shashi yebbare
-  description: Oracle Java 1.8.171
+  description: Oracle Java 1.8.172
   company: SKYDEVOPS
   license: license (GPLv2, CC-BY, etc)
   min_ansible_version: 2.2
