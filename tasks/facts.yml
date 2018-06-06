@@ -41,14 +41,18 @@
     java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_main_rel }}u{{ java_min_rel }}-b11/{{jdk171_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 171
 
-- name: Show Download url
-  debug:
-    msg: "{{java_download_url}}"
+# - name: Show Download url
+#   debug:
+#     msg: "{{java_download_url}}"
 
 - name: Check if File Exists
   stat:
     path: "{{java_data_dir}}/{{java_src_tar}}"
   register: jdk_already_present
+
+- name: Checking the Stats
+  debug:
+    msg: "{{jdk_already_present.stat}}"
 
 - name: download Java RPM
   get_url:
@@ -62,7 +66,3 @@
   delay: 5
   become: yes
   when: jdk_already_present.stat.exists == False 
-
-- name: Download Location
-  debug:
-    msg: "{{ java_install_dir }}/{{ java_src_tar }}"
