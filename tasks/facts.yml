@@ -61,7 +61,7 @@
   retries: 10
   delay: 5
   become: yes
-  when: not jdk_already_present.exists
+  when: jdk_already_present.stat.exists == False 
 
 - name: Download Location
   debug:
