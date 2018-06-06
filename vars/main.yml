@@ -9,6 +9,7 @@ jdk141_b15: 336fa29ff2bb4ef291e347e091f7f4a7
 java_main_rel: 8
 java_min_rel: 171 # Select 172|171
 java_install_dir: /apps
+java_data_dir: /data
 java_shared_home: /usr/shared/java
 java_profile_sh: /etc/profile.d/jdk.sh
 java_src_tar: " jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz "
