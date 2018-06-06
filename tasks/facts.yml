@@ -1,25 +1,11 @@
 ---
-- name: determine if Java is already installed
-  shell: which java
-  register: task_installed_java
-  changed_when: task_installed_java.rc != 0
-  failed_when: no
-
-- name: set fact installed_java
-  set_fact:
-    installed_java={{ not task_installed_java.changed }}
-
-- name: determine which Java version is installed
-  shell: java -version
-  when: installed_java
-  register: task_installed_java_version
-  changed_when: False
-
-- name: set fact installed_java_version
-  set_fact:
-    java_version_installed="{{ task_installed_java_version.stderr.split('\n')[0]|regex_replace('.*\"(.*)\"','\\1') }}"
-  when: task_installed_java_version is defined and task_installed_java_version.stdout is defined
-  changed_when: False
+# gathering Java facts
+- name: Check Java Version
+  shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g' |  awk '{split($0,a,"."); print a[2]}'
+  register: jmaxver
+- name: Check Java Version
+  shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g' |  awk '{split($0,a,"."); print a[3]}' | awk '{split($0,b,"_"); print b[2]}'
+  register: jminver
 
 - debug:
     var="{{ item }}"
@@ -41,9 +27,6 @@
     java_download_url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_main_rel }}u{{ java_min_rel }}-b11/{{jdk171_b11}}/jdk-{{java_main_rel}}u{{java_min_rel}}-linux-x64.tar.gz"
   when: java_main_rel == 8 and java_min_rel == 171
 
-# - name: Show Download url
-#   debug:
-#     msg: "{{java_download_url}}"
 
 - name: Check if File Exists
   stat:

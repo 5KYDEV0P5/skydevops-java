@@ -21,11 +21,15 @@
 # Source the profile
 - name: Source JAVA profile
   shell: . {{ java_profile_sh }}
+  when: {{java_main_rel}} != {{jmaxver}} and {{java_min_rel}} != {{jminver}}
 
 # install thriugh alternatives
 - name: setup alternatives
   template: src=alternatives-Debian.j2 dest=~/alternatives.sh mode="u=rwx,g=r,o=r"
+  when: {{java_main_rel}} != {{jmaxver}} and {{java_min_rel}} != {{jminver}}
 - name: Apply java alternatives
   shell: ~/alternatives.sh
+  when: {{java_main_rel}} != {{jmaxver}} and {{java_min_rel}} != {{jminver}}
 - name: delete alternatives script
   file: path=~/alternatives.sh state=absent  
+  when: {{java_main_rel}} != {{jmaxver}} and {{java_min_rel}} != {{jminver}}
