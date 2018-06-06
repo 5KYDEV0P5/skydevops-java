@@ -33,8 +33,23 @@ All the variable that can be overridden are stored in [vars/main.yml](vars/main.
 
 ## Example
 
+### Playbook Default file locations based on playbook execution 
 
-## Playbook
+```jinja
+{# The defaults PATHS where Ansible looks for the files #}
+When executing the playbook from the following path:
+$ cd {{ path_on_server }}/
+$ ansible-playbook {{playbook_dir}}/playbook.yml
+
+   {{ path_on_server }}/roles/{{ ansible_role }}/files/jdk-8u171-linux-x64.zip   
+   {{ path_on_server }}/roles/{{ ansible_role }}/jdk-8u171-linux-x64.zip   
+   {{ path_on_server }}/roles/{{ ansible_role }}/tasks/files/jdk-8u171-linux-x64.zip   
+   {{ path_on_server }}/roles/{{ ansible_role }}/tasks/jdk-8u171-linux-x64.zip   
+   {{ path_on_server }}/{{ playbook_dir }}/files/jdk-8u171-linux-x64.zip   
+   {{ path_on_server }}/{{ playbook_dir }}/jdk-8u171-linux-x64.zip
+```
+
+### Playbook
 
 
 ```yaml
