@@ -45,6 +45,11 @@
   debug:
     msg: "{{java_download_url}}"
 
+- name: Check if File Exists
+  stat:
+    path: "{{java_data_dir}}/{{java_src_tar}}"
+  register: jdk_already_present
+
 - name: download Java RPM
   get_url:
     headers: 'Cookie:gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'
@@ -56,6 +61,7 @@
   retries: 10
   delay: 5
   become: yes
+  when: not jdk_already_present.exists
 
 - name: Download Location
   debug:
