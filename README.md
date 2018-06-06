@@ -8,7 +8,7 @@ This role will install and configure Oracle Java 1.8.0_171/172 on RedHat/CentOS 
 
 
 ## Requirements
-- Ansible >=2.3
+- Ansible >=2.4
 - EPEL Repo for RedHat/Centos, which can be installed automatically using the [common](https://github.com/5KYDEV0P5/common) ansible role.
 
 
@@ -16,7 +16,7 @@ This role will install and configure Oracle Java 1.8.0_171/172 on RedHat/CentOS 
 All the variable that can be overridden are stored in [vars/main.yml](vars/main.yml) or [defaults/main.yml](defaults/main.yml) file as shown in the table below:
 
 | Name           | Default Value | Description                        |
-| -------------- | ----------------------- | -----------------------------------|
+| -------------- | --------------------------------- | -----------------------------------|
 | `java_main_rel` | : 8 | Major Release of Java |
 | `java_min_rel` | : 171 | Minor Release of Java, select 172 or 171 |
 | `java_data_dir` | : /data | The directory where the application data is stored<br> Automatically created by [common](https://github.com/5KYDEV0P5/common) Role |

@@ -3,4 +3,5 @@
   remote_user: root
   roles:
     - 5KYDEV0P5.common
-    - skydevops-java
+    - 5KYDEV0P5.skydevops-java
+    - role_under_test
