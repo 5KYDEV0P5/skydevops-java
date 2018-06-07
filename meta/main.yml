@@ -5,12 +5,16 @@ galaxy_info:
   license: license (GPLv2, CC-BY, etc)
   min_ansible_version: 2.4
   platforms:
-  - name: RedHat
-    versions:
-    - 7
-  - name: Debian
-    versions:
-    - 16.04
+    - name: EL
+      versions:
+      - 7
+    - name: Debian
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - trusty
+      - xenial
 
   galaxy_tags: []
 dependencies: []
